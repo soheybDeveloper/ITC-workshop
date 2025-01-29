@@ -15,16 +15,17 @@ def display_banner():
 def show_button_and_message():
     st.text(" ")    
     st.text(" ")
+    st.text("Comming soon!")
 
-    col1, col2, col3 = st.columns([1, 2, 1])
+    # col1, col2, col3 = st.columns([1, 2, 1])
 
-    with col2:
-        button = st.button("IT", use_container_width=True)
+    # with col2:
+    #     button = st.button("IT", use_container_width=True)
 
-        if button:
-            st.markdown("<h1 style='text-align: center;'>CCCCCC</h1>", unsafe_allow_html=True)
-            st.markdown("<h3 style='text-align: center;'>Sharing is caring!</h1>", unsafe_allow_html=True)
-            # st.balloons()
+    #     if button:
+    #         st.markdown("<h1 style='text-align: center;'>CCCCCC</h1>", unsafe_allow_html=True)
+    #         st.markdown("<h3 style='text-align: center;'>Sharing is caring!</h1>", unsafe_allow_html=True)
+    #         st.balloons()
             
 
 
