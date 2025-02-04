@@ -15,6 +15,7 @@ def display_banner():
 def show_button_and_message():
     st.text(" ")    
     st.text(" ")
+    st.text(" ")
 
     col1, col2, col3 = st.columns([1, 2, 1])
 
