@@ -1,0 +1,3 @@
+memories.db
+storage/uploads/*
+!storage/uploads/.gitignore

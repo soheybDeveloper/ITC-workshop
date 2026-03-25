@@ -1,37 +1,36 @@
 import streamlit as st
-from src.config import config
-import streamlit as st
-from PIL import Image       
-import time
+from bootstrap.init import bootstrap_app
+from database import init_db
+from src.services.pagination_service import PaginationService
+from components.banner import render_banner
+from components.memory_form import render_upload_form
+from components.memory_feed import render_feed
 
-config()
+# 1. Initialize Application Configuration
+bootstrap_app()
 
-def display_banner():
-    image = Image.open('./assets/images/itc_logo.png')
-    image = image.resize((int(image.width * 0.5), int(image.height * 0.5)))
-    st.image(image, use_column_width=True)
+# 2. Ensure Database is ready
+init_db.execute()
 
-
-def show_button_and_message():
-    st.text(" ")    
-    st.text(" ")
-
-    col1, col2, col3 = st.columns([1, 2, 1])
-
-    with col2:
-        button = st.button("IT", use_container_width=True)
-
-        if button:
-            st.markdown("<h1 style='text-align: center;'>CCCCCC</h1>", unsafe_allow_html=True)
-            st.markdown("<h3 style='text-align: center;'>Sharing is caring!</h1>", unsafe_allow_html=True)
-            st.balloons()
-            
-
+# 3. Setup Session State for Pagination
+PaginationService.init_state()
 
 def main():
-    display_banner()
-    show_button_and_message()
-
+    # --- Component 1: Banner Layout ---
+    render_banner()
+    
+    st.markdown("<h2 style='text-align: center;'>The Wall of Memories</h2>", unsafe_allow_html=True)
+    st.markdown("---")
+    
+    # --- Component 2: Memory Creation Form ---
+    render_upload_form()
+    st.markdown("---")
+    
+    # Fetch Database Records via Service
+    memories, limit = PaginationService.get_current_page_memories()
+    
+    # --- Component 3: Feed and Layout Switcher ---
+    render_feed(memories, limit)
 
 if __name__ == "__main__":
     main()
