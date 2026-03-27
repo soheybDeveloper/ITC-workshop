@@ -1,7 +1,7 @@
 import streamlit as st
 from dotenv import load_dotenv
 import os
-from .config import Config
+from config.config import Config
 
 def bootstrap_app():
     # Load environment variables

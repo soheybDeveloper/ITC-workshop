@@ -4,7 +4,7 @@ from config.config import Config
 
 def execute(uploaded_file):
     if uploaded_file is None:
-        return None
+        return None, "No file uploaded"
 
     file_size_mb = uploaded_file.size / (1024 * 1024)
     if file_size_mb > Config.UPLOAD_LIMIT_MB:

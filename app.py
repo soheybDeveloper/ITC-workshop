@@ -5,6 +5,7 @@ from src.services.pagination_service import PaginationService
 from components.banner import render_banner
 from components.memory_form import render_upload_form
 from components.memory_feed import render_feed
+from config.config import Config
 
 # 1. Initialize Application Configuration
 bootstrap_app()
@@ -19,7 +20,7 @@ def main():
     # --- Component 1: Banner Layout ---
     render_banner()
     
-    st.markdown("<h2 style='text-align: center;'>The Wall of Memories</h2>", unsafe_allow_html=True)
+    st.markdown(f"<h2 style='text-align: center;'>{Config.APP_NAME}</h2>", unsafe_allow_html=True)
     st.markdown("---")
     
     # --- Component 2: Memory Creation Form ---

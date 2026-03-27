@@ -2,3 +2,5 @@ memories.db
 storage/uploads/*
 !storage/uploads/.gitignore
 __pycache__/
+
+.env
